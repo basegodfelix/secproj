@@ -1,12 +1,12 @@
 import setuptools
 import os
 
-try:
+def read():
+    tmp = ""
     path = os.path.dirname(os.path.abspath(__file__))
     with open(os.path.join(path, 'README.md'), encoding='utf-8') as f:
-        long_description = f.read()
-except Exception:
-    long_description = ''
+        tmp = f.read()
+    return tmp
 
 setuptools.setup(
     name="SecProj",
@@ -16,7 +16,7 @@ setuptools.setup(
     packages=["secproj"],
     install_requires=["cryptography","python-dotenv"],
     url="https://github.com/basegodfelix/secproj",
-    long_description = long_description,
-    long_description_context_type = 'text/markdown',
+    long_description = read(),
+    long_description_content_type = 'text/markdown',
     license="MIT"
 )
