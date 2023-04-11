@@ -10,11 +10,11 @@ def read():
 
 setuptools.setup(
     name="SecProj",
-    version="1.0.0",
+    version="1.0.1",
     author="Felix Hernandez",
     description="Simple tools to help you secure your projects in a more simple manner, allowing for simple and secure development.",
     packages=["secproj"],
-    install_requires=["cryptography","python-dotenv"],
+    install_requires=["cryptography","python-dotenv","requests"],
     url="https://github.com/basegodfelix/secproj",
     long_description = read(),
     long_description_content_type = 'text/markdown',

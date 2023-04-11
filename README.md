@@ -17,7 +17,7 @@ It is up to each person using these tools to secure the key and env files accord
 
 The gitignore overwrite is disabled by default because it can create a nuisance for developers but it can easily be enabled.
 # Dependencies
-This code is very simple and only has two dependencies, cryptography and python-dotenv.
+This code is very simple and only has three dependencies: cryptography, python-dotenv and requests.
 # Installation
 ```
 pip install secproj

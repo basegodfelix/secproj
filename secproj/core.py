@@ -1,6 +1,7 @@
 import os
 import sys
 import dotenv
+import requests
 from cryptography.fernet import Fernet
 
 class Secure(object):
@@ -10,7 +11,7 @@ class Secure(object):
         self.key_file = self.data_path + 'enc.key'
         self.dotenv_file = self.data_path + ".env"
         self.gitignore_file = self.active_path + "/.gitignore"
-        self.base_ignore_file = os.path.dirname(os.path.abspath(__file__)) + "/ignore.txt"
+        self.base_ignore_file = "https://raw.githubusercontent.com/basegodfelix/secproj/main/secproj/ignore.txt"
 
         if not os.path.exists(self.data_path):
             os.makedirs(self.data_path)
@@ -50,8 +51,9 @@ class Secure(object):
     def overwrite_gitignore(self):
         try:
             contents = ""
-            with open(self.base_ignore_file, "r") as reader:
-                contents = reader.read()
+            resp = requests.get(self.base_ignore_file)
+            if resp.status_code == 200:
+                contents = resp.text
             if contents != "":
                 with open(self.gitignore_file, "w") as writer:
                     writer.write(contents)
